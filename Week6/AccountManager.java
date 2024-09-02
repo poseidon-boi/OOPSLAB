@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 class Account {
-    String name, type;
+    String name;
     long accno;
-    double balance, minimum_balance;
+    double balance;
     void displayBalance() {
         System.out.println("Balance: "+balance);
     }
@@ -16,20 +16,20 @@ class Account {
             System.out.println("Insufficient balance");
             return;
         }
-        amount -= balance;
+        balance -= amount;
         displayBalance();
     }
 }
 
 class SavingsAccount extends Account {
     double interest;
+    private static final int penalty = 150, minimum_balance = 10000;
+    static final String type = "Savings";
     SavingsAccount(String n, long a, double b) {
         name = n;
-        type = "Savings";
         accno = a;
         balance = b;
         interest = 3.5;
-        minimum_balance = 10000;
     }
     void depositInterest() {
         double amount = balance * interest / 100.0;
@@ -39,29 +39,29 @@ class SavingsAccount extends Account {
     }
     void checkMinimum() {
         if(balance < minimum_balance) {
-            if (balance < 150)
+            if (balance < penalty)
                 balance = 0;
             else
-                balance -= 150;
+                balance -= penalty;
         }
         displayBalance();
     }
 }
 
 class CurrentAccount extends Account {
+    private static final int penalty = 450, minimum_balance = 25000;
+    static final String type = "Current";
     CurrentAccount(String n, long a, double b) {
         name = n;
-        type = "Current";
         accno = a;
         balance = b;
-        minimum_balance = 25000;
     }
     void checkMinimum() {
         if(balance < minimum_balance) {
-            if (balance < 450)
+            if (balance < penalty)
                 balance = 0;
             else
-                balance -= 450;
+                balance -= penalty;
         }
         displayBalance();
     }
@@ -74,22 +74,25 @@ class AccountManager {
         String name = sc.nextLine();
         System.out.print("Enter account number: ");
         long accno = sc.nextLong();
-        sc.nextLine();
         System.out.print("Enter s for savings and c for current: ");
         char type = sc.next().charAt(0);
         System.out.print("Enter initial balance: ");
-        double balance = sc.nextInt();
-        switch (type) {
-            case 's':
-                SavingsAccount sacc = new SavingsAccount(name, accno, balance);
-                System.out.println("Created successfully!");
-                break;
-            case 'c':
-                CurrentAccount cacc = new CurrentAccount(name, accno, balance);
-                System.out.println("Created successfully!");
-                break;
-            default:
-                System.out.println("Invalid choice: ");
+        double balance = sc.nextInt(), amount;
+        Account acc;
+        if (type == 's')
+            acc = new SavingsAccount(name, accno, balance);
+        else if (type == 'c')
+            acc = new CurrentAccount(name, accno, balance);
+        else {
+            System.out.println("Invalid choice");
+            return;
         }
+        System.out.println("Created successfully!");
+        System.out.print("Enter deposit amount: ");
+        amount = sc.nextDouble();
+        acc.deposit(amount);
+        System.out.print("Enter withdrawal amount: ");
+        amount = sc.nextDouble();
+        acc.withdraw(amount);
     }
 }
