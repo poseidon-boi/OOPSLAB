@@ -4,9 +4,12 @@ class Account {
     String name, type;
     long accno;
     double balance, minimum_balance;
+    void displayBalance() {
+        System.out.println("Balance: "+balance);
+    }
     void deposit(double amount) {
         balance += amount;
-        System.out.println("Updated balance: "+balance);
+        displayBalance();
     }
     void withdraw(double amount) {
         if (amount > balance) {
@@ -14,10 +17,7 @@ class Account {
             return;
         }
         amount -= balance;
-        System.out.println("Updated balance: "+balance);
-    }
-    void displayBalance() {
-        System.out.println("Balance: "+balance);
+        displayBalance();
     }
 }
 
