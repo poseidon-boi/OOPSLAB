@@ -16,6 +16,9 @@ class Account {
         amount -= balance;
         System.out.println("Updated balance: "+balance);
     }
+    void displayBalance() {
+        System.out.println("Balance: "+balance);
+    }
 }
 
 class SavingsAccount extends Account {
@@ -32,7 +35,7 @@ class SavingsAccount extends Account {
         double amount = balance * interest / 100.0;
         System.out.println("Interest amount: "+amount);
         balance += amount;
-        System.out.println("Updated balance: "+balance);
+        displayBalance();
     }
     void checkMinimum() {
         if(balance < minimum_balance) {
@@ -41,7 +44,7 @@ class SavingsAccount extends Account {
             else
                 balance -= 150;
         }
-        System.out.println("Updated balance: "+balance);
+        displayBalance();
     }
 }
 
@@ -60,7 +63,7 @@ class CurrentAccount extends Account {
             else
                 balance -= 450;
         }
-        System.out.println("Updated balance: "+balance);
+        displayBalance();
     }
 }
 
