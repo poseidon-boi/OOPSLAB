@@ -51,12 +51,13 @@ class StudentDetails {
             double fees = sc.nextDouble();
             System.out.print("Type(u for UG and p for PG): ");
             char type = sc.next().charAt(0);
+            Student stud;
             switch (type) {
                 case 'u':
-                    UG ug = new UG(name, age, regno, semester, fees);
+                    stud = new UG(name, age, regno, semester, fees);
                     break;
                 case 'p':
-                    PG pg = new PG(name, age, regno, semester, fees);
+                    stud = new PG(name, age, regno, semester, fees);
                     break;
                 default:
                     System.out.println("Invalid type");
