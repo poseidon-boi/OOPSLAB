@@ -55,15 +55,15 @@ class StudentDetails {
             switch (type) {
                 case 'u':
                     stud = new UG(name, age, regno, semester, fees);
+                    System.out.println("Student added successfully!");
                     break;
                 case 'p':
                     stud = new PG(name, age, regno, semester, fees);
+                    System.out.println("Student added successfully!");
                     break;
                 default:
                     System.out.println("Invalid type");
             }
-            if (type == 'u' || type == 'p')
-                System.out.println("Student added successfully!");
             System.out.println("Enter 1 to exit: ");
             int exit = sc.nextInt();
             if (exit == '1')
