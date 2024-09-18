@@ -65,7 +65,7 @@ class StudentDetails {
                     System.out.println("Invalid type");
             }
             System.out.println("Enter 1 to exit: ");
-            int exit = sc.nextInt();
+            char exit = sc.next().charAt(0);
             if (exit == '1')
                 break;
             sc.nextLine();
