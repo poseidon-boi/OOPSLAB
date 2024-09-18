@@ -78,7 +78,7 @@ class Area2 {
         System.out.print("Enter length of square: ");
         side = sc.nextDouble();
         Triangle tri = new Triangle(ba, h);
-        Square sq = new Square(size);
+        Square sq = new Square(side);
         System.out.println("Area of rectangle = "+rec.area()+"\nArea of circle = "+cir.area()+
                            "Area of triangle = "+tri.area()+"\nArea of square = "+sq.area());
     }
