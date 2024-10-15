@@ -14,9 +14,10 @@ class Replace {
             for (j = 1; i+j < strb.length(); j++)
                 if (strb.charAt(i+j) != ch)
                     break;
-            if (j != 1)
-                strb.replace(i, i+j, word);
-            i += word.length()-1;
+            if (j != 1) {
+                strb.replace(i, i + j, word);
+                i += word.length() - 1;
+            }
         }
         System.out.print("New string is: "+ strb);
     }
