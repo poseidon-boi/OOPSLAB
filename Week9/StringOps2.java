@@ -63,11 +63,9 @@ class StringOps2 {
                 System.out.print("Enter another string: ");
                 str2 = sc.nextLine();
                 int pos = posSubstring(str, str2);
-                StringBuilder strb = null;
-                if (pos != -1) {
-                    strb = new StringBuilder(str);
+                StringBuilder strb = new StringBuilder(str);
+                if (pos != -1)
                     strb.replace(pos, pos + str2.length(), "Hello");
-                }
                 System.out.print("New string: "+strb);
                 break;
             default:
