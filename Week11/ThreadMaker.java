@@ -17,7 +17,7 @@ class RunnableThread implements Runnable {
 class ThreadMaker {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.print("""
+        System.out.println("""
                 1. Create thread using Runnable
                 2. Create thread by extending Thread""");
         while (true) {
