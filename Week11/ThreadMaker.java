@@ -19,7 +19,8 @@ class ThreadMaker {
         Scanner scan = new Scanner(System.in);
         System.out.println("""
                 1. Create thread using Runnable
-                2. Create thread by extending Thread""");
+                2. Create thread by extending Thread
+                3. Exit""");
         while (true) {
             RunnableThread rth;
             ExtendedThread eth;
